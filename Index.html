@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Data Format</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        #box-center {
+            background-color: #ffffff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff; 
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .dark-mode #box-center {
+            background-color: #3e3d3d;
+            border-color: #444; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .dark-mode .form-control {
+            background-color: #333; 
+            color: #ffffff; 
+            border: 1px solid #444; 
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .dark-mode .form-control:focus {
+            background-color: #444;
+            border-color: #ffcc00;
+            box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); 
+        }
+        .btn-check:focus+.btn-dark, .btn-dark:focus , .btn-check:focus+.btn-light, .btn-light:focus , .btn-check:focus+.btn-primary, .btn-primary:focus{
+            box-shadow: none;
+        }
+        #darkModeToggle{
+            position: absolute;
+            right: 100px;
+        }
+        #versionButton{
+            position: absolute;
+            top: 80px;
+            right: 100px;
+        }
+    </style>
+</head>
+<body style="background: #404040;">
+    <div class="container mt-3 ">
+        <div id="box-center" class="border border-info-subtle p-3 rounded">
+            <button id="darkModeToggle" class="btn btn-primary">🌙 Dark Mode</button>
+            <button id="versionButton" class="btn btn-primary">📝 Ver. Detail </button>
+            <h3>SQL DATA FORMAT</h3>
+            <div class="row g-0">
+                <div class="col-12 mb-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="options" id="GEN2QS" value="GEN2QS" checked>
+                        <label class="form-check-label" for="GEN2QS">GEN2QS</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="options" id="GEN2QM" value="GEN2QM" disabled>
+                        <label class="form-check-label" for="GEN2QM">GEN2QM</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="options" id="GEN2QL" value="GEN2QL" disabled>
+                        <label class="form-check-label" for="GEN2QL">GEN2QL</label>
+                    </div>
+                    <button type="button" id="copy" class="btn btn-primary" onClick="copy_data()">Copy</button>
+                    <button type="button" class="btn btn-danger" onClick="clear_data()">Clear</button>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-2 mt-2 mb-5">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="radio" value="None" id="None" name="selectCommand" onchange="convertData()" checked>
+                        <label class="form-check-label" for="None">None</label>
+                    </div>
+                </div>
+                <div class="col-2 mb-2 mt-2 mb-5">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="radio" value="SelectAll" id="SelectAll" name="selectCommand" onchange="convertData()">
+                        <label class="form-check-label" for="SelectAll">Show SELECT</label>
+                    </div>
+                </div>
+                <div class="col-2 mb-2 mt-2 mb-5">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="radio" value="UpdateAll" id="UpdateAll" name="selectCommand" onchange="convertData()">
+                        <label class="form-check-label" for="UpdateAll">Show Update</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="mb-3">
+                        <textarea class="form-control" id="InputData" rows="3" onkeyup="convertData()" style="height: 300px;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <h3>Export SQL</h3>
+            <div class="mb-3">
+                <textarea class="form-control" id="OutputData" rows="3" style="height: 300px;"></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="versions.js"></script>
+    <script>
+        $( document ).ready(function() {
+            let isDarkMode = false;
+
+            $('#darkModeToggle').on('click', function() {
+                isDarkMode = !isDarkMode;
+                $('body').toggleClass('dark-mode', isDarkMode);
+                
+                $(this).text(isDarkMode ? '🔆 Light Mode' : '🌙 Dark Mode');
+                $(this).toggleClass('btn-primary', !isDarkMode);
+                $(this).toggleClass('btn-light', isDarkMode);
+            }); 
+            // Version Info Button 
+
+
+            $('#versionButton').on('click', function() {
+                let versionInfoHtml = '';
+                $.each(versionData, function(index, version) {
+                    versionInfoHtml += `
+                        <h3>Version: ${version.version}</h3>
+                        <p>Release Date: ${version.releaseDate}</p>
+                        <p>New Features:</p>
+                        <ul style='text-align: left;'>
+                            ${version.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                        <hr>
+                    `;
+                });
+
+                Swal.fire({
+                    title: 'Version Update',
+                    html: versionInfoHtml,
+                    icon: 'info',
+                    confirmButtonText: 'Close'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
