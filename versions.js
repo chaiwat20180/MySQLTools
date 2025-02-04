@@ -3,6 +3,15 @@ const versionData = [
         "version": "1.0.4",
         "releaseDate": "2025-02-04",
         "features": [
+                        "Add Function for Insert & Delete",
+                        "Support command for Full & Manual",
+                        "Some bug & code"
+                    ]
+    },
+    {
+        "version": "1.0.4",
+        "releaseDate": "2025-02-04",
+        "features": [
                         "Change some class to support Mobile",
                         "Add Title and Change to Label (Input Data & Export Data)",
                         "Add RGB Title Version Update",
