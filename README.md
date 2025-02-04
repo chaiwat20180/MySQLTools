@@ -3,7 +3,7 @@
 For WHERE with IN xD
 
 ## Try to use
-- [👉 Click ](https://chaiwat20180.github.io/MySQLTools/test)
+- [👉 Click ](https://chaiwat20180.github.io/MySQLTools)
 
 ## Features
 - [x] Dark Mode
