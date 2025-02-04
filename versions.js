@@ -1,6 +1,6 @@
 const versionData = [
     {
-        "version": "1.0.4",
+        "version": "1.0.5",
         "releaseDate": "2025-02-04",
         "features": [
                         "Add Function for Insert & Delete",
