@@ -3,7 +3,7 @@ const versionData = [
         "version": "1.0.4",
         "releaseDate": "2025-02-04",
         "features": [
-                        "Change some class for support Mobile",
+                        "Change some class to support Mobile",
                         "Add Title and Change to Label (Input Data & Export Data)",
                         "Add RGB Title Version Update",
                         "Add Copyright"
