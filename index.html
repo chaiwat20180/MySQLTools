@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,38 +15,50 @@
             background-color: #ffffff;
             transition: background-color 0.3s, border-color 0.3s;
         }
+
         /* Dark Mode */
         .dark-mode {
             background-color: #121212;
-            color: #ffffff; 
+            color: #ffffff;
             transition: background-color 0.3s, border-color 0.3s;
         }
+
         .dark-mode #box-center {
             background-color: #3e3d3d;
-            border-color: #444; 
+            border-color: #444;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             transition: background-color 0.3s, border-color 0.3s;
         }
+
         .dark-mode .form-control {
-            background-color: #333; 
-            color: #ffffff; 
-            border: 1px solid #444; 
+            background-color: #333;
+            color: #ffffff;
+            border: 1px solid #444;
             transition: background-color 0.3s, border-color 0.3s;
         }
+
         .dark-mode .form-control:focus {
             background-color: #444;
             border-color: #ffcc00;
-            box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); 
+            box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
         }
-        .btn-check:focus+.btn-dark, .btn-dark:focus , .btn-check:focus+.btn-light, .btn-light:focus , .btn-check:focus+.btn-primary, .btn-primary:focus{
+
+        .btn-check:focus+.btn-dark,
+        .btn-dark:focus,
+        .btn-check:focus+.btn-light,
+        .btn-light:focus,
+        .btn-check:focus+.btn-primary,
+        .btn-primary:focus {
             box-shadow: none;
         }
+
         .copyright {
             text-align: center;
             margin-top: 10px;
             font-size: 0.9rem;
-            color: #888; 
+            color: #888;
         }
+
         /* }
         #darkModeToggle{
             position: absolute;
@@ -69,24 +82,31 @@
             font-size: 3rem;
             font-weight: bold;
             background: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
-            background-size: 300% 300%; 
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             background-clip: text;
-            color: transparent; 
+            color: transparent;
             animation: color-change 10s linear infinite;
         }
+
         @keyframes color-change {
             0% {
-                background-position: 0% 50%; /* Start*/
+                background-position: 0% 50%;
+                /* Start*/
             }
+
             50% {
-                background-position: 100% 50%; /* End */
+                background-position: 100% 50%;
+                /* End */
             }
+
             100% {
-                background-position: 0% 50%; /* Return*/
+                background-position: 0% 50%;
+                /* Return*/
             }
         }
-        .btn-resize{
+
+        .btn-resize {
             width: 150px;
             padding: 10px;
             margin: 5px;
@@ -98,38 +118,43 @@
             }
         } */
         #SelectTypeInsert {
-            display: none; 
+            display: none;
         }
-        #InsertColumn{
+
+        #InsertColumn {
             display: none;
         }
     </style>
 </head>
+
 <body style="background: #404040;">
     <div class="container mt-4 mb-4 p-3">
         <div id="box-center" class="border border-info-subtle p-4 rounded">
-            
+
             <h3 class="mb-4 font-weight-bold">SQL DATA FORMAT</h3>
             <div class="row g-0">
                 <div class="col-12  mb-4 row">
                     <div class="col-sm-12 col-md-2 col-lg-2">
-                         <span>Type: </span>
+                        <span>Type: </span>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="options" id="GEN2QS" value="GEN2QS" checked>
+                            <input class="form-check-input" type="radio" name="options" id="GEN2QS" value="GEN2QS"
+                                checked>
                             <label class="form-check-label" for="GEN2QS">GEN2QS</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="options" id="GEN2QM" value="GEN2QM" disabled>
+                            <input class="form-check-input" type="radio" name="options" id="GEN2QM" value="GEN2QM"
+                                disabled>
                             <label class="form-check-label" for="GEN2QM">GEN2QM</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="options" id="GEN2QL" value="GEN2QL" disabled>
+                            <input class="form-check-input" type="radio" name="options" id="GEN2QL" value="GEN2QL"
+                                disabled>
                             <label class="form-check-label" for="GEN2QL">GEN2QL</label>
                         </div>
                     </div>
@@ -139,50 +164,55 @@
                 <div class="col-12 mb-4 row">
                     <div class="col-sm-12 col-md-2 col-lg-2">
                         <span>Command: </span>
-                   </div>
+                    </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="radio" value="None" id="None" name="selectCommand" onchange="convertData()" checked>
+                            <input class="form-check-input" type="radio" value="None" id="None" name="selectCommand"
+                                onchange="convertData()" checked>
                             <label class="form-check-label" for="None">None</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="radio" value="SelectAll" id="SelectAll" name="selectCommand" onchange="convertData()">
+                            <input class="form-check-input" type="radio" value="SelectAll" id="SelectAll"
+                                name="selectCommand" onchange="convertData()">
                             <label class="form-check-label" for="SelectAll">Show SELECT</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="radio" value="UpdateAll" id="UpdateAll" name="selectCommand" onchange="convertData()">
+                            <input class="form-check-input" type="radio" value="UpdateAll" id="UpdateAll"
+                                name="selectCommand" onchange="convertData()">
                             <label class="form-check-label" for="UpdateAll">Show Update</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="radio" value="InsertData" id="InsertData" name="selectCommand" onchange="convertData()">
+                            <input class="form-check-input" type="radio" value="InsertData" id="InsertData"
+                                name="selectCommand" onchange="convertData()">
                             <label class="form-check-label" for="InsertData">Show Insert</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="radio" value="DeleteData" id="DeleteData" name="selectCommand" onchange="convertData()">
+                            <input class="form-check-input" type="radio" value="DeleteData" id="DeleteData"
+                                name="selectCommand" onchange="convertData()">
                             <label class="form-check-label" for="DeleteData">Show Delete</label>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mb-4" id="SelectTypeInsert">
-                    <div class="d-flex align-items-center">
+                <div class="col-12 mb-4 row" id="SelectTypeInsert">
+                    <div class="col-12 mb-4 row d-flex">
                         <div class="col-sm-12 col-md-2 col-lg-2">
-                            <span>Type: </span>
+                            <span>Type Insert: </span>
                         </div>
-                        <div class="col-sm-12 col-md-2 col-lg-2">
+                        <div class="col-sm-12 col-md-2 col-lg-2 mb-2 ms-1">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="radio" value="InsertAll" id=" " name="TypeInsert" onchange="convertData()" checked>
+                                <input class="form-check-input" type="radio" value="InsertAll" id="InsertAll" name="TypeInsert" onchange="convertData()" checked>
                                 <label class="form-check-label" for="InsertAll">Insert All</label>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-2 col-lg-2">
+                        <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="radio" value="InsertManual" id="InsertManual" name="TypeInsert" onchange="convertData()">
                                 <label class="form-check-label" for="InsertManual">Insert Manual</label>
@@ -190,15 +220,17 @@
                         </div>
                     </div>
                 </div>
+                
 
 
-                <div class="col-12 mb-2" >
+                <div class="col-12 mb-2">
                     <div class="row">
                         <div class="col-12 col-sm-3 mb-2">
-                            <button type="button" id="copy" class="btn btn-primary w-100" onClick="copy_data()">Copy</button>
+                            <button type="button" id="copy" class="btn btn-primary w-100" onClick="copy_data()">📋
+                                Copy</button>
                         </div>
                         <div class="col-12 col-sm-3 mb-2">
-                            <button type="button" class="btn btn-danger w-100" onClick="clear_data()">Clear</button>
+                            <button type="button" class="btn btn-danger w-100" onClick="clear_data()">🗑️ Clear</button>
                         </div>
                         <div class="col-12 col-sm-3 mb-2">
                             <button id="darkModeToggle" class="btn btn-dark w-100">🌙 Dark Mode</button>
@@ -213,7 +245,8 @@
                 <div class="col-12">
                     <label>Input Column</label>
                     <div class="mt-3 mb-3">
-                        <textarea class="form-control" id="InputColumn" rows="3" onkeyup="convertData()" style="height: 150px;"></textarea>
+                        <textarea class="form-control" id="InputColumn" rows="3" onkeyup="convertData()"
+                            style="height: 150px;"></textarea>
                     </div>
                 </div>
             </div>
@@ -221,7 +254,8 @@
                 <div class="col-12">
                     <label>Input Data</label>
                     <div class="mt-3 mb-3">
-                        <textarea class="form-control" id="InputData" rows="3" onkeyup="convertData()" style="height: 150px;"></textarea>
+                        <textarea class="form-control" id="InputData" rows="3" onkeyup="convertData()"
+                            style="height: 150px;"></textarea>
                     </div>
                 </div>
             </div>
@@ -232,35 +266,36 @@
                         <textarea class="form-control" id="OutputData" rows="3" style="height: 150px;"></textarea>
                     </div>
                     <div class="copyright">
-                        &copy; <span id="currentYear"></span> <a href="https://github.com/chaiwat20180" class="text-decoration-none">Chaiwat Kwanta</a> All rights reserved.
+                        &copy; <span id="currentYear"></span> <a href="https://github.com/chaiwat20180"
+                            class="text-decoration-none">Chaiwat Kwanta</a> All rights reserved.
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="versions.js"></script>
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function () {
             let isDarkMode = false;
             $('#currentYear').text(`2024 - ${new Date().getFullYear()}`);
 
-            $('#darkModeToggle').on('click', function() {
+            $('#darkModeToggle').on('click', function () {
                 isDarkMode = !isDarkMode;
                 $('body').toggleClass('dark-mode', isDarkMode);
-                
+
                 $(this).text(isDarkMode ? '🔆 Light Mode' : '🌙 Dark Mode');
                 $(this).toggleClass('btn-dark', !isDarkMode);
                 $(this).toggleClass('btn-light', isDarkMode);
-            }); 
+            });
             // Version Info Button 
 
 
-            $('#versionButton').on('click', function() {
+            $('#versionButton').on('click', function () {
                 let versionInfoHtml = '';
-                $.each(versionData, function(index, version) {
+                $.each(versionData, function (index, version) {
                     versionInfoHtml += `
                         <h3>Version: ${version.version}</h3>
                         <p>Release Date: ${version.releaseDate}</p>
@@ -281,4 +316,5 @@
         });
     </script>
 </body>
+
 </html>
