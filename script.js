@@ -9,34 +9,41 @@ function convertData() {
 
     if (selectedCommand === 'InsertData') {
         $("#SelectTypeInsert").show();
+        if (selectedTypeInsert === 'InsertManual') {
+            $("#InsertColumn").show();
+        }
+        else {
+            $("#InsertColumn").hide();
+        }
     } else {
         $("#SelectTypeInsert").hide();
-    }
-    if(selectedTypeInsert === 'InsertManual'){
-        $("#InsertColumn").show();
-    }else{
         $("#InsertColumn").hide();
+        $("#InputColumn").val("");
+        $("input[name='TypeInsert'][value='InsertAll']").prop("checked", true);
     }
 
+    switch (selectedCommand) {
+        case 'SelectAll':
+            TextCommand = "SELECT * FROM tbname WHERE columnname IN ";
+            break;
+        case 'UpdateAll':
+            TextCommand = "UPDATE tbname SET columnname = '0' WHERE columnname IN ";
+            break;
+        case 'InsertData':
+            if (selectedTypeInsert === 'InsertAll') {
+                TextCommand = "INSERT INTO tbname VALUES";
+            } else if (selectedTypeInsert === 'InsertManual') {
+                TextCommand = "INSERT INTO tbname";
+            }
+            break;
+        case 'DeleteData':
+            TextCommand = "DELETE FROM tbname WHERE columnname IN ";
+            break;
+        default:
+            TextCommand = "";
+            break;
+    }
 
-    if (selectedCommand === 'SelectAll') {
-        TextCommand = "SELECT * FROM tbname WHERE columnname IN ";
-    }
-    else if (selectedCommand === 'UpdateAll') {
-        TextCommand = "UPDATE tbname SET columnname = '0' WHERE columnname IN ";
-    }
-    else if (selectedCommand === 'InsertData' && selectedTypeInsert === 'InsertAll') {
-        TextCommand = "INSERT INTO tbname VALUES";
-    }
-    else if (selectedCommand === 'InsertData' && selectedTypeInsert === 'InsertManual') {
-        TextCommand = "INSERT INTO tbname";
-    }
-    else if (selectedCommand === 'DeleteData') {
-        TextCommand = "DELETE FROM tbname WHERE columnname IN  ";
-    }
-    else {
-        TextCommand = "";
-    }
     if (selectedOption === "GEN2QS" && inputData) {
         const lines = inputData.split("\n");
         const linesColumn = inputColumn.split("\n");
@@ -46,7 +53,7 @@ function convertData() {
         }
 
         $("#OutputData").val(outputData);
-    }   
+    }
     // else if (selectedOption === "GEN2QM" && inputData) {
     //     const lines = inputData.split("\n");
     //     const outputData = " " + `('${lines.join("','")}')`;
