@@ -1,5 +1,16 @@
 const versionData = [
     {
+        "version": "1.0.6",
+        "releaseDate": "2025-02-05",
+        "features": [
+                        "Fixed bug Show Insert",
+                        "Fix some CSS",
+                        "Fix Type Command Insert",
+                        "Add emoji on Copy and Clear buttons",
+                        "Change logic selectedCommand from if to switch case"
+                    ]
+    },
+    {
         "version": "1.0.5",
         "releaseDate": "2025-02-04",
         "features": [
