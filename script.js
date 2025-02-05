@@ -77,6 +77,7 @@ function convertData() {
 function clear_data() {
     $("#InputData").val("");
     $("#OutputData").val("");
+    $("#InputColumn").val("");
     Swal.fire({
         title: 'Success!',
         text: 'Clear success!',
