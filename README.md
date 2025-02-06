@@ -2,8 +2,8 @@
 <hr>
 For WHERE with IN xD
 
-## Try to use
-- [👉 Click ](https://chaiwat20180.github.io/MySQLTools)
+## Try to use 
+- [👉 Click ](https://chaiwat20180.github.io/MySQLTools) 
 
 ## Features
 - [x] Dark Mode
@@ -15,7 +15,7 @@ For WHERE with IN xD
 - [ ] Add more new features
 
 <hr>
-<h1>Preview</h1>
+<h1>Preview (Old Screenshort)</h1>
 <p align="center">
   <h3>When turn on None </h3>
   <img src="https://cdn.discordapp.com/attachments/1060895647567446036/1335813653181497344/image.png?ex=67a188e9&is=67a03769&hm=c96d81c8d790d6f59e121a7bd84ac908b5a3f3af17114f46f072f6af72537041" title="Preview">
