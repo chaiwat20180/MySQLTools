@@ -1,5 +1,12 @@
 const versionData = [
     {
+        "version": "1.0.9",
+        "releaseDate": "2025-02-12",
+        "features": [
+                        "Add View Counter"
+                    ]
+    },
+    {
         "version": "1.0.8",
         "releaseDate": "2025-02-05",
         "features": [
