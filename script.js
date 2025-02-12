@@ -47,15 +47,13 @@ function convertData() {
 
     if (selectedOption === "GEN2QS" && inputData) {
         let lines ;
-        let linesColumn ;
+        let linesColumn = inputColumn.split(/[\n,]+/).filter(f => f.trim() !== '');
         switch(selectedTypeData){
             case 'Enter' :
                  lines = inputData.split(/[\n]+/).filter(f => f.trim() !== ''); 
-                 linesColumn = inputColumn.split(/[\n]+/).filter(f => f.trim() !== '');
                 break;
             case 'Comma' :
                  lines = inputData.split(/[\n,]+/).filter(f => f.trim() !== ''); 
-                 linesColumn = inputColumn.split(/[\n,]+/).filter(f => f.trim() !== '');
                 break;
         }
 
