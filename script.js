@@ -4,6 +4,7 @@ function convertData() {
     const selectedOption = $('input[name="options"]:checked').val();
     const selectedCommand = $('input[name="selectCommand"]:checked').val();
     const selectedTypeInsert = $('input[name="TypeInsert"]:checked').val();
+    const selectedTypeData = $('input[name="selectTypeData"]:checked').val();
     let TextCommand = "";
 
 
@@ -57,6 +58,7 @@ function convertData() {
                  linesColumn = inputColumn.split(/[\n,]+/).filter(f => f.trim() !== '');
                 break;
         }
+
         let outputData = TextCommand + `('${lines.join("','")}')`;
         if (selectedCommand === 'InsertData' && selectedTypeInsert === 'InsertManual') {
             outputData = TextCommand + `('${linesColumn.join("','")}') VALUES` + `('${lines.join("','")}')`;
