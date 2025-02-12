@@ -45,8 +45,18 @@ function convertData() {
     }
 
     if (selectedOption === "GEN2QS" && inputData) {
-        const lines = inputData.split(/[\n,]+/).filter(f => f.trim() !== ''); 
-        const linesColumn = inputColumn.split(/[\n,]+/).filter(f => f.trim() !== '');
+        let lines ;
+        let linesColumn ;
+        switch(selectedTypeData){
+            case 'Enter' :
+                 lines = inputData.split(/[\n]+/).filter(f => f.trim() !== ''); 
+                 linesColumn = inputColumn.split(/[\n]+/).filter(f => f.trim() !== '');
+                break;
+            case 'Comma' :
+                 lines = inputData.split(/[\n,]+/).filter(f => f.trim() !== ''); 
+                 linesColumn = inputColumn.split(/[\n,]+/).filter(f => f.trim() !== '');
+                break;
+        }
         let outputData = TextCommand + `('${lines.join("','")}')`;
         if (selectedCommand === 'InsertData' && selectedTypeInsert === 'InsertManual') {
             outputData = TextCommand + `('${linesColumn.join("','")}') VALUES` + `('${lines.join("','")}')`;
