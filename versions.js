@@ -1,5 +1,12 @@
 const versionData = [
     {
+        "version": "1.0.8",
+        "releaseDate": "2025-02-05",
+        "features": [
+                        "Add select function to support Enter and , (Now you can Select DataType)"
+                    ]
+    },
+    {
         "version": "1.0.7",
         "releaseDate": "2025-02-05",
         "features": [
