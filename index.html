@@ -124,6 +124,14 @@
         #InsertColumn {
             display: none;
         }
+        .popup-maxheight{
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .popup-detail-maxheight{
+            max-height: 250px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -167,35 +175,35 @@
                         <span>Command: </span>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-switch">
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" value="None" id="None" name="selectCommand"
                                 onchange="convertData()" checked>
                             <label class="form-check-label" for="None">None</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-switch">
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" value="SelectAll" id="SelectAll"
                                 name="selectCommand" onchange="convertData()">
                             <label class="form-check-label" for="SelectAll">Show SELECT</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-switch">
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" value="UpdateAll" id="UpdateAll"
                                 name="selectCommand" onchange="convertData()">
                             <label class="form-check-label" for="UpdateAll">Show Update</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-switch">
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" value="InsertData" id="InsertData"
                                 name="selectCommand" onchange="convertData()">
                             <label class="form-check-label" for="InsertData">Show Insert</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-switch">
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" value="DeleteData" id="DeleteData"
                                 name="selectCommand" onchange="convertData()">
                             <label class="form-check-label" for="DeleteData">Show Delete</label>
@@ -208,13 +216,13 @@
                             <span>Type Insert: </span>
                         </div>
                         <div class="col-sm-12 col-md-2 col-lg-2 mb-2 ms-1">
-                            <div class="form-check form-switch">
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" value="InsertAll" id="InsertAll" name="TypeInsert" onchange="convertData()" checked>
                                 <label class="form-check-label" for="InsertAll">Insert All</label>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                            <div class="form-check form-switch">
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" value="InsertManual" id="InsertManual" name="TypeInsert" onchange="convertData()">
                                 <label class="form-check-label" for="InsertManual">Insert Manual</label>
                             </div>
@@ -226,14 +234,14 @@
                         <span>Data Type: </span>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-switch">
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" value="Enter" id="Enter"
                                 name="selectTypeData" onchange="convertData()" checked>
                             <label class="form-check-label" for="Enter">Enter</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-switch">
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" value="Comma" id="Comma"
                                 name="selectTypeData" onchange="convertData()">
                             <label class="form-check-label" for="Comma">Comma ( , )</label>
@@ -331,8 +339,15 @@
                 });
 
                 Swal.fire({
-                    html: '<h2 class="wave-text">Version Update</h2><hr>' + versionInfoHtml,
+                    //backup old code
+                    // html: '<h2 class="wave-text">Version Update</h2><hr>' + versionInfoHtml,
+                    html: `
+                        <h2 class="wave-text">Version Update</h2>
+                        <hr>
+                        <div class="popup-detail-maxheight">${versionInfoHtml}</div>
+                    `,
                     icon: 'info',
+                    CustomClass: 'popup-maxheight',
                     confirmButtonText: 'Close'
                 });
             });
