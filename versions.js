@@ -4,7 +4,6 @@ const versionData = [
         "releaseDate": "2025-02-14",
         "features": [
                         "Add Tooltip (When hover Dark Mode & What's Button)",
-                        "Add Tooltip (When hover Dark Mode & What's Button)",
                         "Change class Switches to Radio",
                         "Change some class on What's New",
                         "Change class css Clear & Copy Button",
