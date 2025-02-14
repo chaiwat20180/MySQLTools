@@ -1,5 +1,20 @@
 const versionData = [
     {
+        "version": "1.1.0",
+        "releaseDate": "2025-02-14",
+        "features": [
+                        "Add Tooltip (When hover Dark Mode & What's Button)",
+                        "Add Tooltip (When hover Dark Mode & What's Button)",
+                        "Change class Switches to Radio",
+                        "Change some class on What's New",
+                        "Change class css Clear & Copy Button",
+                        "Change some class etc...",
+                        "Remove id box-border (Change Dialog to Full Screen)",
+                        "Add more some bug",
+                        "Etc...."
+                    ]
+    },
+    {
         "version": "1.0.9",
         "releaseDate": "2025-02-12",
         "features": [
