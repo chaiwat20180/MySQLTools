@@ -56,7 +56,7 @@ function convertData() {
                  lines = inputData.split(/[\n,]+/).filter(f => f.trim() !== ''); 
                 break;
         }
-
+        
         let outputData = TextCommand + `('${lines.join("','")}')`;
         if (selectedCommand === 'InsertData' && selectedTypeInsert === 'InsertManual') {
             outputData = TextCommand + `('${linesColumn.join("','")}') VALUES` + `('${lines.join("','")}')`;
@@ -86,61 +86,48 @@ function convertData() {
 
 function clear_data() {
     $("#InputData").val("");
-    $("#OutputData").val("");
+    $("#OutputData").val("Please input data");
     $("#InputColumn").val("");
-    Swal.fire({
-        title: 'Success!',
-        text: 'Clear success!',
-        icon: 'success',
-        timer: 1500,
-        confirmButtonText: 'OK'
-    });
+    const TextClear = $("#clear");
+    TextClear.html("<span class='tick' id='tickClear'>✔️</span> Cleared!");
+    const tick = $("#tickClear");
+    tick.removeClass("show");
+    setTimeout(() => {
+        tick.addClass("show"); 
+    }, 0);
+    setTimeout(() => {
+        TextClear.html("🗑️ Clear");
+    }, 1500);
+    console.log("Clear Success!");
 }
 
-function copy_data() {
+function copy_data(){
     const textArea = $("#OutputData");
     const tempElement = $("<textarea></textarea>").val(textArea.val());
-    const customConfirmButton = Swal.mixin({
-        customClass: {
-            confirmButton: "btn btn-danger",
-            cancelButton: "btn btn-success"
-        },
-        buttonsStyling: true
-    });
+    
+    //get text copy
+    const TextCopy = $("#copy");
+
+    //show-off tick
+    TextCopy.html("<span class='tick' id='tickCopy'>✔️</span> Copied!");
+    const tick = $("#tickCopy");
+    tick.removeClass("show");
+    setTimeout(() => {
+        tick.addClass("show"); 
+    }, 0);
+
+    
 
     $("body").append(tempElement);
     tempElement.select();
-
-    customConfirmButton.fire({
-        title: 'กำลังดำเนินการ...',
-        text: 'กรุณารอสักครู่',
-        allowOutsideClick: false,
-        showConfirmButton: false,
-        didOpen: () => {
-            customConfirmButton.showLoading();
-        }
-    });
-
     navigator.clipboard.writeText(tempElement.val()).then(() => {
-        customConfirmButton.showLoading();
-        Swal.fire({
-            title: 'Success!',
-            text: 'Copy success!',
-            icon: 'success',
-            timer: 1500,
-            confirmButtonText: 'OK'
-        });
+        console.log("Success");
     }).catch(err => {
-        //debug
-        console.error("Failed to copy:", err);
-        Swal.fire({
-            title: 'Error!',
-            text: 'Copy Failed. Please try again or CTRL+F5 and try again.',
-            icon: 'error',
-            timer: 1500,
-            confirmButtonText: 'OK'
-        });
-    }).finally(() => {
+        console.log("Fail");
+    }).finally(()=> {
         tempElement.remove();
+        setTimeout(() => {
+            TextCopy.html("📋 Copy");
+        }, 1500);
     });
 }
