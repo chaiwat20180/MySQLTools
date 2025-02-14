@@ -11,45 +11,45 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <style>
+        
+        /*
+        body {
+            background: #404040;
+        } 
         #box-center {
-            background-color: #ffffff;
+            background-color: #ffffff; 
             transition: background-color 0.3s, border-color 0.3s;
         }
-
-        /* Dark Mode */
+        */
+        body{
+            transition: background-color 0.3s;
+        }
         .dark-mode {
-            background-color: #121212;
+            /* background-color: #121212; */
+            background-color: #3e3d3d;
             color: #ffffff;
-            transition: background-color 0.3s, border-color 0.3s;
+            transition: background-color 0.3s;
         }
 
         .dark-mode #box-center {
             background-color: #3e3d3d;
-            border-color: #444;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            transition: background-color 0.3s, border-color 0.3s;
+            /* border-color: #444; */
+            /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); */
+            border: none;
+            transition: background-color 0.3s;
         }
 
         .dark-mode .form-control {
             background-color: #333;
             color: #ffffff;
             border: 1px solid #444;
-            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .dark-mode .form-control:focus {
-            background-color: #444;
-            border-color: #ffcc00;
-            box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
-        }
-
-        .btn-check:focus+.btn-dark,
-        .btn-dark:focus,
-        .btn-check:focus+.btn-light,
-        .btn-light:focus,
-        .btn-check:focus+.btn-primary,
-        .btn-primary:focus {
-            box-shadow: none;
+            background-color: #404040;
+            /* border-color: #ffcc00;
+            box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); */
+            border: none;
         }
 
         .copyright {
@@ -58,25 +58,6 @@
             font-size: 0.9rem;
             color: #888;
         }
-
-        /* }
-        #darkModeToggle{
-            position: absolute;
-            right: 100px;
-        }
-        #versionButton{
-            position: absolute;
-            top: 80px;
-            right: 100px;
-        } */
-        /* @keyframes wave {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        } */
 
         .wave-text {
             font-size: 3rem;
@@ -92,237 +73,262 @@
         @keyframes color-change {
             0% {
                 background-position: 0% 50%;
-                /* Start*/
             }
 
             50% {
                 background-position: 100% 50%;
-                /* End */
             }
 
             100% {
                 background-position: 0% 50%;
-                /* Return*/
             }
         }
-
-        .btn-resize {
-            width: 150px;
-            padding: 10px;
-            margin: 5px;
-        }
-
-        /* @media only screen and (max-width: 900px) {
-            #darkModeToggle,#versionButton{
-                right: 20%;
-            }
-        } */
         #SelectTypeInsert {
             display: none;
         }
-
         #InsertColumn {
             display: none;
         }
-        .popup-maxheight{
+        .popup-maxheight {
             max-height: 500px;
             overflow-y: auto;
         }
-        .popup-detail-maxheight{
+
+        .popup-detail-maxheight {
             max-height: 250px;
             overflow-y: auto;
+        }
+        .tick {
+            display: inline-block;
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            filter: brightness(0) invert(1);
+            margin-top: -20px;
+        }
+
+        .tick.show {
+            opacity: 1;
+            transform: scale(1);
+            margin-top: -20px;
         }
     </style>
 </head>
 
-<body style="background: #404040;">
+<body>
     <div class="container mt-4 mb-4 p-3">
-        <div id="box-center" class="border border-info-subtle p-4 rounded">
-
-            <h3 class="mb-4 font-weight-bold">MySQLTools</h3>
+        <div class="p-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="font-weight-bold">MySQLTools</h3>
+                <div>
+                    <button id="darkModeToggle" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Dark Mode">🌙</button>
+                    <button id="versionButton" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="What's New">📝</button>
+                </div>
+            </div>
             <hr>
             <div class="row g-0 mt-4">
-                <div class="col-12  mb-4 row">
-                    <div class="col-sm-12 col-md-2 col-lg-2">
-                        <span>Type: </span>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="options" id="GEN2QS" value="GEN2QS"
-                                checked>
-                            <label class="form-check-label" for="GEN2QS">GEN2QS</label>
+                <div class="col-12 mb-4">
+                    <div class="row">
+                        <div class="col-12 col-md-2">
+                            <span>Type: </span>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="options" id="GEN2QM" value="GEN2QM"
-                                disabled>
-                            <label class="form-check-label" for="GEN2QM">GEN2QM (Disable)</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="options" id="GEN2QL" value="GEN2QL"
-                                disabled>
-                            <label class="form-check-label" for="GEN2QL">GEN2QL (Disable)</label>
+                        <div class="col-12 col-md-10">
+                            <div class="row">
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="options" id="GEN2QS" value="GEN2QS" checked>
+                                        <label class="form-check-label" for="GEN2QS">GEN2QS</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="options" id="GEN2QM" value="GEN2QM" disabled>
+                                        <label class="form-check-label" for="GEN2QM">GEN2QM (Disable)</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="options" id="GEN2QL" value="GEN2QL" disabled>
+                                        <label class="form-check-label" for="GEN2QL">GEN2QL (Disable)</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div class="col-12 mb-4 row">
-                    <div class="col-sm-12 col-md-2 col-lg-2">
-                        <span>Command: </span>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="None" id="None" name="selectCommand"
-                                onchange="convertData()" checked>
-                            <label class="form-check-label" for="None">None</label>
+                <div class="col-12 mb-4">
+                    <div class="row">
+                        <div class="col-12 col-md-2">
+                            <span>Command: </span>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="SelectAll" id="SelectAll"
-                                name="selectCommand" onchange="convertData()">
-                            <label class="form-check-label" for="SelectAll">Show SELECT</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="UpdateAll" id="UpdateAll"
-                                name="selectCommand" onchange="convertData()">
-                            <label class="form-check-label" for="UpdateAll">Show Update</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="InsertData" id="InsertData"
-                                name="selectCommand" onchange="convertData()">
-                            <label class="form-check-label" for="InsertData">Show Insert</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="DeleteData" id="DeleteData"
-                                name="selectCommand" onchange="convertData()">
-                            <label class="form-check-label" for="DeleteData">Show Delete</label>
+                        <div class="col-12 col-md-10 mb-2">
+                            <div class="row">
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="None" id="None" name="selectCommand" onchange="convertData()" checked>
+                                        <label class="form-check-label" for="None">None</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="SelectAll" id="SelectAll" name="selectCommand" onchange="convertData()">
+                                        <label class="form-check-label" for="SelectAll">Show SELECT</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="UpdateAll" id="UpdateAll" name="selectCommand" onchange="convertData()">
+                                        <label class="form-check-label" for="UpdateAll">Show Update</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="InsertData" id="InsertData" name="selectCommand" onchange="convertData()">
+                                        <label class="form-check-label" for="InsertData">Show Insert</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="DeleteData" id="DeleteData" name="selectCommand" onchange="convertData()">
+                                        <label class="form-check-label" for="DeleteData">Show Delete</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mb-4 row" id="SelectTypeInsert">
-                    <div class="col-12 mb-4 row d-flex">
-                        <div class="col-sm-12 col-md-2 col-lg-2">
+                <div class="col-12 mb-4" id="SelectTypeInsert">
+                    <div class="row">
+                        <div class="col-12 col-md-2">
                             <span>Type Insert: </span>
                         </div>
-                        <div class="col-sm-12 col-md-2 col-lg-2 mb-2 ms-1">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" value="InsertAll" id="InsertAll" name="TypeInsert" onchange="convertData()" checked>
-                                <label class="form-check-label" for="InsertAll">Insert All</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" value="InsertManual" id="InsertManual" name="TypeInsert" onchange="convertData()">
-                                <label class="form-check-label" for="InsertManual">Insert Manual</label>
+                        <div class="col-12 col-md-10 mb-2">
+                            <div class="row">
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="InsertAll" id="InsertAll" name="TypeInsert" onchange="convertData()" checked>
+                                        <label class="form-check-label" for="InsertAll">Insert All</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="InsertManual" id="InsertManual" name="TypeInsert" onchange="convertData()">
+                                        <label class="form-check-label" for="InsertManual">Insert Manual</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mb-4 row">
-                    <div class="col-sm-12 col-md-2 col-lg-2">
-                        <span>Data Type: </span>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="Enter" id="Enter"
-                                name="selectTypeData" onchange="convertData()" checked>
-                            <label class="form-check-label" for="Enter">Enter</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="Comma" id="Comma"
-                                name="selectTypeData" onchange="convertData()">
-                            <label class="form-check-label" for="Comma">Comma ( , )</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mb-2">
+
+                <div class="col-12 mb-4">
                     <div class="row">
-                        <div class="col-12 col-sm-3 mb-2">
-                            <button type="button" id="copy" class="btn btn-primary w-100" onClick="copy_data()">📋
-                                Copy</button>
+                        <div class="col-12 col-md-2">
+                            <span>Data Type: </span>
                         </div>
-                        <div class="col-12 col-sm-3 mb-2">
-                            <button type="button" class="btn btn-danger w-100" onClick="clear_data()">🗑️ Clear</button>
-                        </div>
-                        <div class="col-12 col-sm-3 mb-2">
-                            <button id="darkModeToggle" class="btn btn-dark w-100">🌙 Dark Mode</button>
-                        </div>
-                        <div class="col-12 col-sm-3 mb-2">
-                            <button id="versionButton" class="btn btn-primary w-100">📝 What's News?</button>
+                        <div class="col-12 col-md-10">
+                            <div class="row">
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="Enter" id="Enter" name="selectTypeData" onchange="convertData()" checked>
+                                        <label class="form-check-label" for="Enter">Enter</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="Comma" id="Comma" name="selectTypeData" onchange="convertData()">
+                                        <label class="form-check-label" for="Comma">Comma ( , )</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row" id="InsertColumn">
-                <div class="col-12">
-                    <label>Input Column</label>
+                <hr class="mb-4">
+                <div class="col-12" id="InsertColumn">
+                    <h3 class="font-weight-bold">Input Column</h3>
                     <div class="mt-3 mb-3">
-                        <textarea class="form-control" id="InputColumn" rows="3" onkeyup="convertData()"
-                            style="height: 150px;"></textarea>
+                        <textarea class="form-control" id="InputColumn" rows="3" onkeyup="convertData()" style="height: 150px;"></textarea>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+
                 <div class="col-12">
-                    <label>Input Data</label>
-                    <div class="mt-3 mb-3">
-                        <textarea class="form-control" id="InputData" rows="3" onkeyup="convertData()"
-                            style="height: 150px;"></textarea>
+                    <h3 class="font-weight-bold">Input Data</h3>
+                    <div class="mt-3 mb-5">
+                        <textarea class="form-control" id="InputData" rows="3" onkeyup="convertData()" style="height: 150px;"></textarea>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+
                 <div class="col-12">
-                    <label>Export SQL</label>
+                    <div class="row">
+                        <div class="col-12 col-lg-2 mb-2">
+                            <h3 class="font-weight-bold">Export SQL</h3>
+                        </div>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <button type="button" id="copy" class="btn btn-primary w-100" onClick="copy_data()">📋 Copy</button>
+                        </div>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <button type="button" id="clear" class="btn btn-danger w-100" onClick="clear_data()">🗑️ Clear</button>
+                        </div>
+                    </div>
                     <div class="mt-3 mb-3">
-                        <textarea class="form-control" id="OutputData" rows="3" style="height: 150px;"></textarea>
+                        <textarea class="form-control" id="OutputData" rows="3" style="height: 150px;">Please input data</textarea>
                     </div>
-                    <div class="copyright">
-                        &copy; <span id="currentYear"></span> <a href="https://github.com/chaiwat20180"
-                            class="text-decoration-none">Chaiwat Kwanta</a> All rights reserved.
-                    </div>
-                    <div class="text-center fw-bold mt-2">
-                            <label for="ViewCounter" style="color: #888;">View Counter</label>
-                    </div>
-                    <div id="sfcpwmpp9ybr7kbn32t2f8pn2xtuj8ysk8r" class="d-flex justify-content-center mt-2"></div>
-                    <script type="text/javascript" src="https://counter6.optistats.ovh/private/counter.js?c=pwmpp9ybr7kbn32t2f8pn2xtuj8ysk8r&down=async" async></script>
-                    <noscript><a href="https://www.freecounterstat.com" title="website counter"><img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=pwmpp9ybr7kbn32t2f8pn2xtuj8ysk8r" border="0" title="website counter" alt="website counter"></a></noscript>
                 </div>
             </div>
 
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> <a href="https://github.com/chaiwat20180" class="text-decoration-none">Chaiwat Kwanta</a> All rights reserved.
+            </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="versions.js"></script>
     <script>
         $(document).ready(function () {
-            let isDarkMode = false;
+            
+             /*Tooltip 
+                Ref code :
+                https://www.geeksforgeeks.org/bootstrap-5-tooltips-dispose-method 
+                https://getbootstrap.com/docs/5.3/components/tooltips/#enable-tooltips
+            */
+            $('[data-bs-toggle="tooltip"]').tooltip();
+
+            function updateTooltip(item, title) {
+                $(item).attr('data-bs-title', title).tooltip('show');
+            }
+
+            function disposeTooltip(item){
+                $(item).tooltip('dispose');
+            }
+            $('#darkModeToggle').on('mouseenter', function() {
+                updateTooltip(this, isDarkMode ? 'Light Mode' : 'Dark Mode');
+            });
+
+            $('#darkModeToggle').on('mouseleave', function() {
+                disposeTooltip(this);
+            });
+            $('#versionButton').on('mouseenter', function() {
+                updateTooltip(this, "What's New");
+            });
+
+            $('#versionButton').on('mouseleave', function() {
+                disposeTooltip(this);
+            });
+
             $('#currentYear').text(`2024 - ${new Date().getFullYear()}`);
 
+            let isDarkMode = false;
             $('#darkModeToggle').on('click', function () {
                 isDarkMode = !isDarkMode;
                 $('body').toggleClass('dark-mode', isDarkMode);
-
-                $(this).text(isDarkMode ? '🔆 Light Mode' : '🌙 Dark Mode');
+                $(this).text(isDarkMode ? '🔆' : '🌙');
                 $(this).toggleClass('btn-dark', !isDarkMode);
                 $(this).toggleClass('btn-light', isDarkMode);
             });
-            // Version Info Button 
-
 
             $('#versionButton').on('click', function () {
                 let versionInfoHtml = '';
@@ -339,12 +345,11 @@
                 });
 
                 Swal.fire({
-                    //backup old code
-                    // html: '<h2 class="wave-text">Version Update</h2><hr>' + versionInfoHtml,
                     html: `
                         <h2 class="wave-text">Version Update</h2>
                         <hr>
                         <div class="popup-detail-maxheight">${versionInfoHtml}</div>
+                        <hr>
                     `,
                     icon: 'info',
                     CustomClass: 'popup-maxheight',
