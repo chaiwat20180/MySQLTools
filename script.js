@@ -5,6 +5,7 @@ function convertData() {
     const selectedCommand = $('input[name="selectCommand"]:checked').val();
     const selectedTypeInsert = $('input[name="TypeInsert"]:checked').val();
     const selectedTypeData = $('input[name="selectTypeData"]:checked').val();
+    const selectedOther = $('input[name="selectOther"]:checked').val();
     let TextCommand = "";
 
 
@@ -61,7 +62,9 @@ function convertData() {
         if (selectedCommand === 'InsertData' && selectedTypeInsert === 'InsertManual') {
             outputData = TextCommand + `('${linesColumn.join("','")}') VALUES` + `('${lines.join("','")}')`;
         }
-
+        if(selectedOther === 'DeleteSinglequoteAndParentheses'){
+            outputData = outputData.replace(/['"()]/g, "");
+        }
         $("#OutputData").val(outputData);
     }
     // else if (selectedOption === "GEN2QM" && inputData) {
