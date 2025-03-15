@@ -1,5 +1,13 @@
 const versionData = [
     {
+        "version": "1.1.1",
+        "releaseDate": "2025-03-15",
+        "features": [
+                        "Add menu for change replace '' , () ",
+
+                    ]
+    },
+    {
         "version": "1.1.0",
         "releaseDate": "2025-02-14",
         "features": [
