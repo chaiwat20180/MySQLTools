@@ -3,8 +3,7 @@ const versionData = [
         "version": "1.1.1",
         "releaseDate": "2025-03-15",
         "features": [
-                        "Add menu for change replace '' , () ",
-
+                        "Add menu Other for Delete '' , () ",
                     ]
     },
     {
