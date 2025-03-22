@@ -9,6 +9,11 @@ For WHERE with IN xD
 - [x] Dark Mode
 - [x] SELECT * FROM tbname WHERE IN .......
 - [x] UPDATE tbname  SET columnname = '0' WHERE columnname IN .......
+- [x] INSERT INTO tbname VALUES('...')
+- [x] [Manual Column Insert] INSERT INTO tbname('...','...') VALUES('...','...')
+- [x] DELETE FROM tbname WHERE columnname IN ('...')
+- [x] Support Enter and Comma Type
+- [x] Support Delete , and ()
 
 ## Future Features
 - [x] Add more new bug
