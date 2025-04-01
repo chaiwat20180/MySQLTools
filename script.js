@@ -6,6 +6,7 @@ function convertData() {
     const selectedTypeInsert = $('input[name="TypeInsert"]:checked').val();
     const selectedTypeData = $('input[name="selectTypeData"]:checked').val();
     const selectedOther = $('input[name="selectOther"]:checked').val();
+    const selectTextStyle = $('input[name="selectTextStyle"]:checked').val();
     let TextCommand = "";
 
 
@@ -64,6 +65,17 @@ function convertData() {
         }
         if(selectedOther === 'DeleteSinglequoteAndParentheses'){
             outputData = outputData.replace(/['"()]/g, "");
+        }
+        if(selectTextStyle === 'LowerTextStyle'){
+            outputData = outputData.toLowerCase();
+        }
+        if(selectTextStyle === 'UpperTextStyle'){
+            outputData = outputData.toUpperCase();
+        }
+        if(selectTextStyle === 'CapitalizeTextStyle'){
+            outputData = outputData.replace(/\b\w/g, function (char) {
+                return char.toUpperCase();
+            });
         }
         $("#OutputData").val(outputData);
     }
