@@ -1,5 +1,12 @@
 const versionData = [
     {
+        "version": "1.1.2",
+        "releaseDate": "2025-04-01",
+        "features": [
+                        "Add Function for Lower & Upper Text",
+                    ]
+    },
+    {
         "version": "1.1.1",
         "releaseDate": "2025-03-15",
         "features": [
